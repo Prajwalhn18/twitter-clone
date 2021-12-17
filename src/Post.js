@@ -24,7 +24,7 @@ function Post({displayName,username,verified,text,avatr}){
                         </h3>
                     </div>
                     <div className="post__headerDescription">
-              <p>First Tweet on clone</p>
+              <p>First Tweet on clone.Uploaded to github.</p>
             </div>
                 </div>
                 <div className="post__footer">
