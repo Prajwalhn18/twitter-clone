@@ -1,6 +1,6 @@
 # Twitter-Clone
 
-The clone is completely built using React.js and firebase as the backend. For iconsI have made use of material-ui. This is just a demo clone which replicates almost the exact design like twitter.
+The clone is completely built using React.js and firebase as the backend. For icons, I have made use of material-UI. This is just a demo clone that replicates almost the exact design as Twitter.
 
 <img src="https://github.com/Prajwalhn18/twitter-clone/blob/main/src/twitter-clone.png" />
 <hr>
