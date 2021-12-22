@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Feed.css";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
+import db from "./firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 import { PostAddSharp } from "@material-ui/icons";
 
-function Feed(){
-    return(
-        <div className="feed">
-            <div className="feed__header">
-            <h1>Home</h1>
+function Feed() {
+  const [posts, setPosts] = useState([]);
+  const usersCollectionRef = collection(db, "Posts");
 
-            </div>
-            {/* Tweet-box */}
-            <TweetBox></TweetBox>
+  useEffect(() => {
+    const getPosts = async () => {
+      const data = await getDocs(usersCollectionRef);
+      console.log("From firestore:", data);
 
-            {/* post */}
-           <Post/>
-            {/* post */}
-            {/* post */}
-            {/* post */}
+      setPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getPosts();
+  }, []);
 
-        </div>
-    );
+  return (
+    <div className="feed">
+      <div className="feed__header">
+        <h1>Home</h1>
+      </div>
+      {/* Tweet-box */}
+      <TweetBox></TweetBox>
+
+      {/* post */}
+      {posts.map((post) => (
+        <Post
+          displayName={post.username}
+          username={post.username}
+          verified={post.verified}
+          text={post.text}
+          avatar={post.avatar}
+        />
+      ))}
+
+      {/* post */}
+      {/* post */}
+      {/* post */}
+    </div>
+  );
 }
 export default Feed;
